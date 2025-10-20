@@ -49,8 +49,8 @@ locals {
         persistence = {
           enabled = true
         }
-        replicas       = 3
-        maxUnavailable = 1
+        replicas       = var.replicas.ingester.replicas
+        maxUnavailable = var.replicas.ingester.maxUnavailable
         affinity       = ""
         resources = {
           requests = { for k, v in var.resources.ingester.requests : k => v if v != null }
@@ -82,7 +82,7 @@ locals {
           ingester = {
             lifecycler = {
               ring = {
-                replication_factor = 3
+                replication_factor = var.replicas.ingester.replication_factor
               }
             }
             wal = {
@@ -180,8 +180,8 @@ locals {
         }
       }
       querier = {
-        replicas       = 4
-        maxUnavailable = 2
+        replicas       = var.replicas.querier.replicas
+        maxUnavailable = var.replicas.querier.maxUnavailable
         affinity       = ""
         resources = {
           requests = { for k, v in var.resources.querier.requests : k => v if v != null }

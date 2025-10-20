@@ -225,3 +225,21 @@ variable "retention" {
     error_message = "Variable must not be null."
   }
 }
+
+variable "replicas" {
+  type = object({
+
+    ingester = optional(object({
+      replicas           = optional(number, 1)
+      maxUnavailable     = optional(number, 1)
+      replication_factor = optional(number, 1)
+    }), {})
+
+    querier = optional(object({
+      replicas       = optional(number, 1)
+      maxUnavailable = optional(number, 1)
+    }), {})
+
+  })
+  default = {}
+}
