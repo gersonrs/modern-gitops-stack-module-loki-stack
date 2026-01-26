@@ -22,15 +22,15 @@ The following requirements are needed by this module:
 
 The following providers are used by this module:
 
-- [[provider_null]] <<provider_null,null>> (>= 3)
-
 - [[provider_random]] <<provider_random,random>> (>= 3)
 
 - [[provider_htpasswd]] <<provider_htpasswd,htpasswd>> (>= 1)
 
+- [[provider_utils]] <<provider_utils,utils>> (>= 1)
+
 - [[provider_argocd]] <<provider_argocd,argocd>> (>= 6)
 
-- [[provider_utils]] <<provider_utils,utils>> (>= 1)
+- [[provider_null]] <<provider_null,null>> (>= 3)
 
 === Resources
 
@@ -78,7 +78,7 @@ Description: Override of target revision of the application chart.
 
 Type: `string`
 
-Default: `"v2.6.1"`
+Default: `"v2.7.0"`
 
 ==== [[input_enable_service_monitor]] <<input_enable_service_monitor,enable_service_monitor>>
 
@@ -299,6 +299,31 @@ Type: `string`
 
 Default: `"30d"`
 
+==== [[input_replicas]] <<input_replicas,replicas>>
+
+Description: n/a
+
+Type:
+[source,hcl]
+----
+object({
+
+    ingester = optional(object({
+      replicas           = optional(number, 1)
+      maxUnavailable     = optional(number, 1)
+      replication_factor = optional(number, 1)
+    }), {})
+
+    querier = optional(object({
+      replicas       = optional(number, 1)
+      maxUnavailable = optional(number, 1)
+    }), {})
+
+  })
+----
+
+Default: `{}`
+
 === Outputs
 
 The following outputs are exported:
@@ -376,7 +401,7 @@ Description: Credentials to access the Loki ingress, if activated.
 |[[input_target_revision]] <<input_target_revision,target_revision>>
 |Override of target revision of the application chart.
 |`string`
-|`"v2.6.1"`
+|`"v2.7.0"`
 |no
 
 |[[input_enable_service_monitor]] <<input_enable_service_monitor,enable_service_monitor>>
@@ -591,6 +616,31 @@ object({
 |Logs retention period. To deactivate retention, pass 0s.
 |`string`
 |`"30d"`
+|no
+
+|[[input_replicas]] <<input_replicas,replicas>>
+|n/a
+|
+
+[source]
+----
+object({
+
+    ingester = optional(object({
+      replicas           = optional(number, 1)
+      maxUnavailable     = optional(number, 1)
+      replication_factor = optional(number, 1)
+    }), {})
+
+    querier = optional(object({
+      replicas       = optional(number, 1)
+      maxUnavailable = optional(number, 1)
+    }), {})
+
+  })
+----
+
+|`{}`
 |no
 
 |===

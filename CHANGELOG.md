@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.7.0](https://github.com/GersonRS/modern-gitops-stack-module-loki-stack/compare/v2.6.1...v2.7.0) (2026-01-26)
+
+
+### 🚀 New Features
+
+* adjust workflows ([8a13c9e](https://github.com/GersonRS/modern-gitops-stack-module-loki-stack/commit/8a13c9e23622d61ca5ebdf33b9192b45359168cb))
+* **chart:** minor update of dependencies on loki-microservice chart ([470258f](https://github.com/GersonRS/modern-gitops-stack-module-loki-stack/commit/470258f0641ec5ae277be99fd468b0d4c6dcfb88))
+* **chart:** minor update of dependencies on loki-microservice chart ([f74c51b](https://github.com/GersonRS/modern-gitops-stack-module-loki-stack/commit/f74c51b66cdfad78c0ef1589e5ff8103a07e3b59))
+* update the things ([1a03462](https://github.com/GersonRS/modern-gitops-stack-module-loki-stack/commit/1a0346222d6c65f41cb2ee7b110ab45d699f2632))
+
+
+### 📚 Documentation
+
+* add Copilot instructions for AI coding assistance ([7b80252](https://github.com/GersonRS/modern-gitops-stack-module-loki-stack/commit/7b802521302622c184b4bc5da5352375bc961e1e))
+
 ## [2.6.1](https://github.com/GersonRS/modern-gitops-stack-module-loki-stack/compare/v2.6.0...v2.6.1) (2025-02-08)
 
 
