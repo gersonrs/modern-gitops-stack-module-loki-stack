@@ -1,4 +1,5 @@
-{{- if .Values.httproute.enabled }}
+{{- $httproute := (.Values.httproute | default dict) }}
+{{- if ($httproute.enabled | default false) }}
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
@@ -6,13 +7,13 @@ metadata:
   name: loki-frontend
 spec:
   parentRefs:
-    - name: {{ .Values.httproute.gateway_name | default "istio-gateway" }}
-      namespace: {{ .Values.httproute.gateway_namespace | default "istio-ingress" }}
+    - name: {{ $httproute.gateway_name | default "istio-gateway" }}
+      namespace: {{ $httproute.gateway_namespace | default "istio-ingress" }}
       sectionName: https
   hostnames:
-    - {{ .Values.httproute.host | quote }}
+    - {{ $httproute.host | quote }}
   rules:
     - backendRefs:
-        - name: {{ .Values.httproute.service_name | default "loki-query-frontend" }}
+        - name: {{ $httproute.service_name | default "loki-query-frontend" }}
           port: 3100
 {{- end }}
