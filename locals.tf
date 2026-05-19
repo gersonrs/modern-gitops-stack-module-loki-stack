@@ -1,16 +1,17 @@
 locals {
   fullnameOverride = "loki"
 
-  helm_values = [{
-    # TODO Reevaluate the need for having an ingress for Loki, as nobody seems to be using it.
-    frontendIngress = var.ingress != null ? {
-      lokiCredentials = base64encode("loki:${htpasswd_password.loki_password_hash.0.bcrypt}")
-      hosts           = var.ingress.hosts
-      clusterIssuer   = var.ingress.cluster_issuer
-      allowedIPs      = var.ingress.allowed_ips
-      serviceName     = "${local.fullnameOverride}-query-frontend"
-    } : null
+  helm_values_httproute = var.ingress != null ? [{
+    httproute = {
+      enabled           = true
+      host              = var.ingress.hosts[0]
+      gateway_name      = var.gateway_name
+      gateway_namespace = var.gateway_namespace
+      service_name      = "${local.fullnameOverride}-query-frontend"
+    }
+  }] : []
 
+  helm_values = [{
     # Value to configure the Loki datasource in Grafana.
     datasourceURL = "http://${local.fullnameOverride}-query-frontend.loki-stack:3100"
 

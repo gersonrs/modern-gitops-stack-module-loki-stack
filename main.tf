@@ -2,16 +2,6 @@ resource "null_resource" "dependencies" {
   triggers = var.dependency_ids
 }
 
-resource "random_password" "loki_password" {
-  count  = var.ingress != null ? 1 : 0
-  length = 30
-}
-
-resource "htpasswd_password" "loki_password_hash" {
-  count    = var.ingress != null ? 1 : 0
-  password = random_password.loki_password.0.result
-}
-
 resource "argocd_project" "this" {
   count = var.argocd_project == null ? 1 : 0
 
@@ -41,7 +31,7 @@ resource "argocd_project" "this" {
 }
 
 data "utils_deep_merge_yaml" "values" {
-  input = [for i in concat(local.helm_values, var.helm_values) : yamlencode(i)]
+  input = [for i in concat(local.helm_values, local.helm_values_httproute, var.helm_values) : yamlencode(i)]
 }
 
 resource "argocd_application" "this" {
