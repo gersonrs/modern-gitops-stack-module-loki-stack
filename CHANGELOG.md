@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.8.0](https://github.com/gersonrs/modern-gitops-stack-module-loki-stack/compare/v2.7.0...v2.8.0) (2026-05-19)
+
+
+### 🚀 New Features
+
+* migrate ingress from Traefik IngressRoute to Istio Gateway API HTTPRoute ([2cf43e7](https://github.com/gersonrs/modern-gitops-stack-module-loki-stack/commit/2cf43e720c83ececd05aad4832383c7ed2e17031))
+* migrate ingress to Istio Gateway API HTTPRoute ([47063da](https://github.com/gersonrs/modern-gitops-stack-module-loki-stack/commit/47063daea955778332be664a6a29efd978dd6b91))
+
+
+### 🔥 Bug Fixes
+
+* avoid nil pointer when httproute values are not defined ([625b879](https://github.com/gersonrs/modern-gitops-stack-module-loki-stack/commit/625b879996cf69d9b2ba49343a22f0d068d09260))
+* remove loki_credentials from kind/outputs.tf ([d2f47fe](https://github.com/gersonrs/modern-gitops-stack-module-loki-stack/commit/d2f47fe274b85a001ddcde544d762bd3cdafaa0e))
+* remove loki_credentials output referencing removed htpasswd resource ([37085ed](https://github.com/gersonrs/modern-gitops-stack-module-loki-stack/commit/37085edc2db8df82ed18914079c9e5674d61b0f3))
+
 ## [2.7.0](https://github.com/GersonRS/modern-gitops-stack-module-loki-stack/compare/v2.6.1...v2.7.0) (2026-01-26)
 
 

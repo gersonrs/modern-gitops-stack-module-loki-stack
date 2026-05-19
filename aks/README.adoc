@@ -5,8 +5,6 @@ The following requirements are needed by this module:
 
 - [[requirement_argocd]] <<requirement_argocd,argocd>> (>= 6)
 
-- [[requirement_htpasswd]] <<requirement_htpasswd,htpasswd>> (>= 1)
-
 - [[requirement_null]] <<requirement_null,null>> (>= 3)
 
 - [[requirement_random]] <<requirement_random,random>> (>= 3)
@@ -96,7 +94,7 @@ Description: Override of target revision of the application chart.
 
 Type: `string`
 
-Default: `"v2.7.0"`
+Default: `"v2.8.0"`
 
 ==== [[input_enable_service_monitor]] <<input_enable_service_monitor,enable_service_monitor>>
 
@@ -342,6 +340,22 @@ object({
 
 Default: `{}`
 
+==== [[input_gateway_name]] <<input_gateway_name,gateway_name>>
+
+Description: Name of the Istio Gateway resource to attach HTTPRoutes to.
+
+Type: `string`
+
+Default: `"istio-gateway"`
+
+==== [[input_gateway_namespace]] <<input_gateway_namespace,gateway_namespace>>
+
+Description: Namespace where the Istio Gateway resource is deployed.
+
+Type: `string`
+
+Default: `"istio-ingress"`
+
 === Outputs
 
 The following outputs are exported:
@@ -361,7 +375,6 @@ Description: Credentials to access the Loki ingress, if activated.
 |===
 |Name |Version
 |[[requirement_argocd]] <<requirement_argocd,argocd>> |>= 6
-|[[requirement_htpasswd]] <<requirement_htpasswd,htpasswd>> |>= 1
 |[[requirement_null]] <<requirement_null,null>> |>= 3
 |[[requirement_random]] <<requirement_random,random>> |>= 3
 |[[requirement_utils]] <<requirement_utils,utils>> |>= 1
@@ -441,7 +454,7 @@ object({
 |[[input_target_revision]] <<input_target_revision,target_revision>>
 |Override of target revision of the application chart.
 |`string`
-|`"v2.7.0"`
+|`"v2.8.0"`
 |no
 
 |[[input_enable_service_monitor]] <<input_enable_service_monitor,enable_service_monitor>>
@@ -681,6 +694,18 @@ object({
 ----
 
 |`{}`
+|no
+
+|[[input_gateway_name]] <<input_gateway_name,gateway_name>>
+|Name of the Istio Gateway resource to attach HTTPRoutes to.
+|`string`
+|`"istio-gateway"`
+|no
+
+|[[input_gateway_namespace]] <<input_gateway_namespace,gateway_namespace>>
+|Namespace where the Istio Gateway resource is deployed.
+|`string`
+|`"istio-ingress"`
 |no
 
 |===
