@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/gersonrs/modern-gitops-stack-module-loki-stack/compare/v2.9.0...v3.0.0) (2026-11-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* provider major bumps and a stricter Terraform baseline; consumers must run `terraform init -upgrade`.
+
+### 🚀 New Features
+
+* upgrade charts, providers and Terraform baseline ([#21](https://github.com/gersonrs/modern-gitops-stack-module-loki-stack/issues/21)) ([d210f0b](https://github.com/gersonrs/modern-gitops-stack-module-loki-stack/commit/d210f0b5d3c7c06a2cae1bf082087c19e65f37a6))
+
 ## [2.9.0](https://github.com/gersonrs/modern-gitops-stack-module-loki-stack/compare/v2.8.0...v2.9.0) (2026-07-11)
 
 
