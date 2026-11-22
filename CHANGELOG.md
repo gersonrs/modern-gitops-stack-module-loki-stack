@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.0.0](https://github.com/gersonrs/modern-gitops-stack-module-loki-stack/compare/v3.0.0...v4.0.0) (2026-11-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* Alloy jumps to a 1.x major; the config syntax used here is compatible, but any out-of-tree overrides should be reviewed.
+
+### 🚀 New Features
+
+* upgrade Grafana Alloy to 1.16.0 and Promtail to 6.17.1 ([#23](https://github.com/gersonrs/modern-gitops-stack-module-loki-stack/issues/23)) ([2224203](https://github.com/gersonrs/modern-gitops-stack-module-loki-stack/commit/2224203fee5aa8fd0a603715a99025b2b4ab9415))
+
 ## [3.0.0](https://github.com/gersonrs/modern-gitops-stack-module-loki-stack/compare/v2.9.0...v3.0.0) (2026-11-20)
 
 
