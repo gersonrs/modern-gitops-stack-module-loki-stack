@@ -1,8 +1,62 @@
 = modern-gitops-stack-module-loki-stack
-
+// Document attributes to replace along the document
 :loki-distributed-chart-version: 0.80.6
-:promtail-chart-version: 6.17.0
-:filebeat-chart-version: 7.17.3
+:promtail-chart-version: 6.17.1
+:alloy-chart-version: 1.16.0
+:original-repo-url: https://github.com/grafana/helm-charts
+
+A https://modern-gitops-stack.io[Modern GitOps Stack] module to deploy Loki for log aggregation, shipped with Promtail and Alloy as collectors.
+
+The charts used by this module are shipped in this repository as well, in order to avoid any unwanted behaviors caused by unsupported versions.
+
+[cols="1,1,1",options="autowidth,header"]
+|===
+|Current Chart Version |Original Repository |Default Values
+|*0.80.6* |https://github.com/grafana/helm-charts/tree/main/charts/loki-distributed[loki-distributed] |https://artifacthub.io/packages/helm/loki-distributed/loki-distributed/0.80.6?modal=values[`values.yaml`]
+|*6.17.1* |https://github.com/grafana/helm-charts/tree/main/charts/promtail[promtail] |https://artifacthub.io/packages/helm/promtail/promtail/6.17.1?modal=values[`values.yaml`]
+|*1.16.0* |https://github.com/grafana/helm-charts/tree/main/charts/alloy[alloy] |https://artifacthub.io/packages/helm/alloy/alloy/1.16.0?modal=values[`values.yaml`]
+|===
+
+== Usage
+
+This module can be declared by adding the following block to your Terraform configuration:
+
+[source,terraform]
+----
+module "loki-stack" {
+  source = "git::https://github.com/GersonRS/modern-gitops-stack-module-loki-stack.git?ref=<RELEASE>"
+
+  cluster_name   = local.cluster_name
+  base_domain    = local.base_domain
+  subdomain      = local.subdomain
+  cluster_issuer = local.cluster_issuer
+  app_autosync   = local.app_autosync
+
+  dependency_ids = {
+    istio          = module.istio.id
+    minio          = module.minio.id
+    crds_bootstrap = module.crds_bootstrap.id
+  }
+}
+----
+
+The application is deployed to the `observability` namespace.
+
+== Technical Reference
+
+=== Dependencies
+
+==== `module.istio.id`
+
+Loki is exposed through the Istio gateway.
+
+==== `module.minio.id`
+
+Loki stores its chunks in the MinIO bucket.
+
+==== `module.crds_bootstrap.id`
+
+Loki ships ServiceMonitors, which need the Prometheus Operator CRDs.
 
 // BEGIN_TF_DOCS
 === Requirements
