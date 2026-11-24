@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.0.1](https://github.com/gersonrs/modern-gitops-stack-module-loki-stack/compare/v4.0.0...v4.0.1) (2026-11-24)
+
+
+### 📚 Documentation
+
+* add usage and dependencies to the module documentation ([#25](https://github.com/gersonrs/modern-gitops-stack-module-loki-stack/issues/25)) ([1147e36](https://github.com/gersonrs/modern-gitops-stack-module-loki-stack/commit/1147e36f525a925e325f5302b7c1ac311c7d5692))
+
 ## [4.0.0](https://github.com/gersonrs/modern-gitops-stack-module-loki-stack/compare/v3.0.0...v4.0.0) (2026-11-22)
 
 
